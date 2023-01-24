@@ -1,0 +1,24 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data
+data = pd.read_csv("housing_data.csv")
+
+# Print the first few rows of the data
+print(data.head())
+
+# Generate histograms for the numerical columns
+data.hist(bins=50, figsize=(20,15))
+plt.show()
+
+# Generate scatter plots for the numerical columns
+pd.plotting.scatter_matrix(data, figsize=(12, 8))
+plt.show()
+
+# Plot the average price by location
+data.groupby("location").mean()["price"].plot(kind="bar")
+plt.show()
+
+# Plot the average price by year built
+data.groupby("year_built").mean()["price"].plot()
+plt.show()
